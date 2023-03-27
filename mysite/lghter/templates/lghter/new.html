@@ -1,0 +1,31 @@
+
+{% block content %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+<head>
+    <title>{% block title %}My amazing site{% endblock %}</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/popup.js' %}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2">
+<h3>Enter a new apartment</h3>
+
+ <form action="{% url 'lghter:new' %}" method="post" class="form">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+    <a href="{% url 'lghter:index' %}" class="btn btn-link">Cancel</a>
+</form>
+        </div>
+    <div class="col-sm-8"></div>
+    </div>
+</body>
+{% endblock %}
